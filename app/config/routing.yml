@@ -1,3 +1,7 @@
 app:
-    resource: '@AppBundle/Controller/'
+    resource: '@AppBundle/Controller/api'
     type: annotation
+
+auth:
+    type: rest
+    resource: AppBundle\Controller\Webservice\AuthController

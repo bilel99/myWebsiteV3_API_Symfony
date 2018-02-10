@@ -37,7 +37,7 @@ class AdapterTest extends LdapTestCase
     {
         $ldap = new Adapter($this->getLdapConfig());
 
-        $ldap->getConnection()->bind('cn=admin,dc=symfony,dc=com', 'symfony');
+        $ldap->getConnection()->bind('cn=Webservice,dc=symfony,dc=com', 'symfony');
         $query = $ldap->createQuery('dc=symfony,dc=com', '(&(objectclass=person)(ou=Maintainers))', array());
         $result = $query->execute();
 
@@ -57,7 +57,7 @@ class AdapterTest extends LdapTestCase
     {
         $ldap = new Adapter($this->getLdapConfig());
 
-        $ldap->getConnection()->bind('cn=admin,dc=symfony,dc=com', 'symfony');
+        $ldap->getConnection()->bind('cn=Webservice,dc=symfony,dc=com', 'symfony');
         $query = $ldap->createQuery('dc=symfony,dc=com', '(&(objectclass=person)(ou=Maintainers))', array());
         $result = $query->execute();
         $iterator = $result->getIterator();
@@ -83,7 +83,7 @@ class AdapterTest extends LdapTestCase
     {
         $ldap = new Adapter($this->getLdapConfig());
 
-        $ldap->getConnection()->bind('cn=admin,dc=symfony,dc=com', 'symfony');
+        $ldap->getConnection()->bind('cn=Webservice,dc=symfony,dc=com', 'symfony');
 
         $query = $ldap->createQuery('cn=Fabien Potencier,dc=symfony,dc=com', '(objectclass=*)', array(
            'scope' => Query::SCOPE_BASE,
@@ -99,7 +99,7 @@ class AdapterTest extends LdapTestCase
     {
         $ldap = new Adapter($this->getLdapConfig());
 
-        $ldap->getConnection()->bind('cn=admin,dc=symfony,dc=com', 'symfony');
+        $ldap->getConnection()->bind('cn=Webservice,dc=symfony,dc=com', 'symfony');
 
         $one_level_result = $ldap->createQuery('ou=Components,dc=symfony,dc=com', '(objectclass=*)', array(
             'scope' => Query::SCOPE_ONE,

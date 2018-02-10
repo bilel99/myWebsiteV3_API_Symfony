@@ -29,7 +29,7 @@ class DefaultAuthenticationSuccessHandlerTest extends TestCase
         $token = $this->getMockBuilder('Symfony\Component\Security\Core\Authentication\Token\TokenInterface')->getMock();
         $handler = new DefaultAuthenticationSuccessHandler($httpUtils, $options);
         if ($request->hasSession()) {
-            $handler->setProviderKey('admin');
+            $handler->setProviderKey('Webservice');
         }
         $this->assertSame('http://localhost'.$redirectedUrl, $handler->onAuthenticationSuccess($request, $token)->getTargetUrl());
     }
@@ -37,8 +37,8 @@ class DefaultAuthenticationSuccessHandlerTest extends TestCase
     public function getRequestRedirections()
     {
         $session = $this->getMockBuilder('Symfony\Component\HttpFoundation\Session\SessionInterface')->getMock();
-        $session->expects($this->once())->method('get')->with('_security.admin.target_path')->will($this->returnValue('/admin/dashboard'));
-        $session->expects($this->once())->method('remove')->with('_security.admin.target_path');
+        $session->expects($this->once())->method('get')->with('_security.Webservice.target_path')->will($this->returnValue('/Webservice/dashboard'));
+        $session->expects($this->once())->method('remove')->with('_security.Webservice.target_path');
         $requestWithSession = Request::create('/');
         $requestWithSession->setSession($session);
 
@@ -71,7 +71,7 @@ class DefaultAuthenticationSuccessHandlerTest extends TestCase
             'target path in session' => array(
                 $requestWithSession,
                 array(),
-                '/admin/dashboard',
+                '/Webservice/dashboard',
             ),
             'target path as referer' => array(
                 Request::create('/', 'GET', array(), array(), array(), array('HTTP_REFERER' => 'http://localhost/dashboard')),

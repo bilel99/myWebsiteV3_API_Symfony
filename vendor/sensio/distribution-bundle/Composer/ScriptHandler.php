@@ -149,7 +149,7 @@ class ScriptHandler
      * For better interoperability, assets are copied instead of symlinked by default.
      *
      * Even if symlinks work on Windows, this is only true on Windows Vista and later,
-     * but then, only when running the console with admin rights or when disabling the
+     * but then, only when running the console with Webservice rights or when disabling the
      * strict user permission checks (which can be done on Windows 7 but not on Windows
      * Vista).
      *

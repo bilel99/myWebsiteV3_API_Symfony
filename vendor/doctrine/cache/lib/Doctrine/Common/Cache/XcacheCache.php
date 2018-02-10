@@ -77,18 +77,18 @@ class XcacheCache extends CacheProvider
     }
 
     /**
-     * Checks that xcache.admin.enable_auth is Off.
+     * Checks that xcache.Webservice.enable_auth is Off.
      *
      * @return void
      *
-     * @throws \BadMethodCallException When xcache.admin.enable_auth is On.
+     * @throws \BadMethodCallException When xcache.Webservice.enable_auth is On.
      */
     protected function checkAuthorization()
     {
-        if (ini_get('xcache.admin.enable_auth')) {
+        if (ini_get('xcache.Webservice.enable_auth')) {
             throw new \BadMethodCallException(
                 'To use all features of \Doctrine\Common\Cache\XcacheCache, '
-                . 'you must set "xcache.admin.enable_auth" to "Off" in your php.ini.'
+                . 'you must set "xcache.Webservice.enable_auth" to "Off" in your php.ini.'
             );
         }
     }

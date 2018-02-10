@@ -122,7 +122,7 @@ class RouteCollectionBuilderTest extends TestCase
         // 3) Add another route
         $routes->add('/', 'AppBundle:Default:homepage', 'homepage');
         // 4) Add another route
-        $routes->add('/admin', 'AppBundle:Admin:dashboard', 'admin_dashboard');
+        $routes->add('/Webservice', 'AppBundle:Admin:dashboard', 'admin_dashboard');
 
         // set a default value
         $routes->setDefault('_locale', 'fr');
@@ -151,7 +151,7 @@ class RouteCollectionBuilderTest extends TestCase
         $collectionBuilder = new RouteCollectionBuilder();
 
         // add a "named" route
-        $collectionBuilder->add('/admin', 'AppBundle:Admin:dashboard', 'admin_dashboard');
+        $collectionBuilder->add('/Webservice', 'AppBundle:Admin:dashboard', 'admin_dashboard');
         // add an unnamed route
         $collectionBuilder->add('/blogs', 'AppBundle:Blog:list')
             ->setMethods(array('GET'));
@@ -254,7 +254,7 @@ class RouteCollectionBuilderTest extends TestCase
         // empty prefix is of course ok
         $tests[] = array('', '/foo', '/foo');
         // normal prefix - does not matter if it's a wildcard
-        $tests[] = array('/{admin}', '/foo', '/{admin}/foo');
+        $tests[] = array('/{Webservice}', '/foo', '/{Webservice}/foo');
         // shows that a prefix will always be given the starting slash
         $tests[] = array('0', '/foo', '/0/foo');
 
@@ -274,14 +274,14 @@ class RouteCollectionBuilderTest extends TestCase
         $adminRoutes = $routes->createBuilder();
         $adminRoutes->add('/dashboard', 'AdminController::dashboardAction', 'admin_dashboard');
 
-        // embedded collection under /admin
+        // embedded collection under /Webservice
         $adminBlogRoutes = $routes->createBuilder();
         $adminBlogRoutes->add('/new', 'BlogController::newAction', 'admin_blog_new');
-        // mount into admin, but before the parent collection has been mounted
+        // mount into Webservice, but before the parent collection has been mounted
         $adminRoutes->mount('/blog', $adminBlogRoutes);
 
-        // now mount the /admin routes, above should all still be /blog/admin
-        $routes->mount('/admin', $adminRoutes);
+        // now mount the /Webservice routes, above should all still be /blog/Webservice
+        $routes->mount('/Webservice', $adminRoutes);
         // add a route after mounting
         $adminRoutes->add('/users', 'AdminController::userAction', 'admin_users');
 
@@ -301,15 +301,15 @@ class RouteCollectionBuilderTest extends TestCase
             ->expects($this->any())
             ->method('load')
             ->will($this->returnValue($importedCollection));
-        // import this from the /admin route builder
-        $adminRoutes->import('admin.yml', '/imported');
+        // import this from the /Webservice route builder
+        $adminRoutes->import('Webservice.yml', '/imported');
 
         $collection = $routes->build();
-        $this->assertEquals('/admin/dashboard', $collection->get('admin_dashboard')->getPath(), 'Routes before mounting have the prefix');
-        $this->assertEquals('/admin/users', $collection->get('admin_users')->getPath(), 'Routes after mounting have the prefix');
-        $this->assertEquals('/admin/blog/new', $collection->get('admin_blog_new')->getPath(), 'Sub-collections receive prefix even if mounted before parent prefix');
-        $this->assertEquals('/admin/stats/sales', $collection->get('admin_stats_sales')->getPath(), 'Sub-collections receive prefix if mounted after parent prefix');
-        $this->assertEquals('/admin/imported/foo', $collection->get('imported_route')->getPath(), 'Normal RouteCollections are also prefixed properly');
+        $this->assertEquals('/Webservice/dashboard', $collection->get('admin_dashboard')->getPath(), 'Routes before mounting have the prefix');
+        $this->assertEquals('/Webservice/users', $collection->get('admin_users')->getPath(), 'Routes after mounting have the prefix');
+        $this->assertEquals('/Webservice/blog/new', $collection->get('admin_blog_new')->getPath(), 'Sub-collections receive prefix even if mounted before parent prefix');
+        $this->assertEquals('/Webservice/stats/sales', $collection->get('admin_stats_sales')->getPath(), 'Sub-collections receive prefix if mounted after parent prefix');
+        $this->assertEquals('/Webservice/imported/foo', $collection->get('imported_route')->getPath(), 'Normal RouteCollections are also prefixed properly');
     }
 
     public function testAutomaticRouteNamesDoNotConflict()
@@ -328,7 +328,7 @@ class RouteCollectionBuilderTest extends TestCase
         $accountRoutes->add('/dashboard', '')
             ->setMethods(array('POST'));
 
-        $routes->mount('/admin', $adminRoutes);
+        $routes->mount('/Webservice', $adminRoutes);
         $routes->mount('/account', $accountRoutes);
 
         $collection = $routes->build();

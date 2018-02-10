@@ -162,11 +162,11 @@ class LdapClientTest extends LdapTestCase
     {
         $config = $this->getLdapConfig();
         $ldap = new LdapClient($config['host'], $config['port']);
-        $ldap->bind('cn=admin,dc=symfony,dc=com', 'symfony');
+        $ldap->bind('cn=Webservice,dc=symfony,dc=com', 'symfony');
         $result = $ldap->find('dc=symfony,dc=com', '(&(objectclass=person)(ou=Maintainers))');
 
         $con = @ldap_connect($config['host'], $config['port']);
-        @ldap_bind($con, 'cn=admin,dc=symfony,dc=com', 'symfony');
+        @ldap_bind($con, 'cn=Webservice,dc=symfony,dc=com', 'symfony');
         $search = @ldap_search($con, 'dc=symfony,dc=com', '(&(objectclass=person)(ou=Maintainers))', array('*'));
         $expected = @ldap_get_entries($con, $search);
 

@@ -95,7 +95,7 @@ class GenerateControllerCommandTest extends GenerateCommandTest
         return array(
             array(array('--controller' => 'AcmeBlogBundle:Post'), array('Post', 'annotation', 'twig', array())),
             array(array('--controller' => 'AcmeBlogBundle:Post', '--route-format' => 'yml', '--template-format' => 'php'), array('Post', 'yml', 'php', array())),
-            array(array('--controller' => 'AcmeBlogBundle:Post', '--actions' => array('showAction getListAction:/_getlist/{max}:AcmeBlogBundle:List:post.html.twig createAction:/admin/create')), array('Post', 'annotation', 'twig', array(
+            array(array('--controller' => 'AcmeBlogBundle:Post', '--actions' => array('showAction getListAction:/_getlist/{max}:AcmeBlogBundle:List:post.html.twig createAction:/Webservice/create')), array('Post', 'annotation', 'twig', array(
                 'showAction' => array(
                     'name' => 'showAction',
                     'route' => '/show',
@@ -110,7 +110,7 @@ class GenerateControllerCommandTest extends GenerateCommandTest
                 ),
                 'createAction' => array(
                     'name' => 'createAction',
-                    'route' => '/admin/create',
+                    'route' => '/Webservice/create',
                     'placeholders' => array(),
                     'template' => 'default',
                 ),
