@@ -1,7 +1,6 @@
 app:
-    resource: '@AppBundle/Controller/api'
+    resource: '@AppBundle/Controller'
     type: annotation
 
-auth:
-    type: rest
-    resource: AppBundle\Controller\Webservice\AuthController
+api_login_check:
+    path: /api/login_check

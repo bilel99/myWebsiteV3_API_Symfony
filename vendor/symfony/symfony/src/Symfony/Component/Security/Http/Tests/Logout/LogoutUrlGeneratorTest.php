@@ -88,7 +88,7 @@ class LogoutUrlGeneratorTest extends TestCase
     public function testGuessFromCurrentFirewallContext()
     {
         $this->generator->registerListener('secured_area', '/logout', null, null, null, 'secured');
-        $this->generator->setCurrentFirewall('Webservice', 'secured');
+        $this->generator->setCurrentFirewall('admin', 'secured');
 
         $this->assertSame('/logout', $this->generator->getLogoutPath());
     }

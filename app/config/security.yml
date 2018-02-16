@@ -14,7 +14,7 @@ security:
             security: false
 
         main:
-            anonymous:
+            anonymous: ~
 
 
     access_control:

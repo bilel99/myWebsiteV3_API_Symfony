@@ -139,19 +139,19 @@ class Role
      */
     public function __construct()
     {
-        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->user = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
      * Add user
      *
-     * @param \AppBundle\Entity\Users $user
+     * @param \AppBundle\Entity\User $user
      *
      * @return Role
      */
-    public function addUser(\AppBundle\Entity\Users $user)
+    public function addUser(\AppBundle\Entity\User $user)
     {
-        $this->users[] = $user;
+        $this->user[] = $user;
 
         return $this;
     }
@@ -159,21 +159,21 @@ class Role
     /**
      * Remove user
      *
-     * @param \AppBundle\Entity\Users $user
+     * @param \AppBundle\Entity\User $user
      */
-    public function removeUser(\AppBundle\Entity\Users $user)
+    public function removeUser(\AppBundle\Entity\User $user)
     {
-        $this->users->removeElement($user);
+        $this->user->removeElement($user);
     }
 
     /**
-     * Get users
+     * Get user
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getUsers()
+    public function getUser()
     {
-        return $this->users;
+        return $this->user;
     }
 
     /**
@@ -188,15 +188,5 @@ class Role
         $this->user = $user;
 
         return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return \AppBundle\Entity\User
-     */
-    public function getUser()
-    {
-        return $this->user;
     }
 }

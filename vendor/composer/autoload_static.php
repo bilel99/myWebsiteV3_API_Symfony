@@ -10,9 +10,9 @@ class ComposerStaticInit4647381315d6caf172f5cd69d1360e4b
         '92c8763cd6170fce6fcfe7e26b4e8c10' => __DIR__ . '/..' . '/symfony/phpunit-bridge/bootstrap.php',
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
         '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
+        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '023d27dca8066ef29e6739335ea73bad' => __DIR__ . '/..' . '/symfony/polyfill-php70/bootstrap.php',
         'bd9634f2d41831496de0d3dfe4c94881' => __DIR__ . '/..' . '/symfony/polyfill-php56/bootstrap.php',
-        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '6a47392539ca2329373e0d33e1dba053' => __DIR__ . '/..' . '/symfony/polyfill-intl-icu/bootstrap.php',
         '32dcc8afd4335739640db7d200c1971d' => __DIR__ . '/..' . '/symfony/polyfill-apcu/bootstrap.php',
         '719971e375036615a0685b6fb054583d' => __DIR__ . '/..' . '/symfony/symfony/src/Symfony/Component/VarDumper/Resources/functions/dump.php',
@@ -54,11 +54,15 @@ class ComposerStaticInit4647381315d6caf172f5cd69d1360e4b
         ),
         'N' => 
         array (
-            'Negotiation\\' => 12,
+            'Nelmio\\CorsBundle\\' => 18,
         ),
         'M' => 
         array (
             'Monolog\\' => 8,
+        ),
+        'J' => 
+        array (
+            'JMS\\SerializerBundle\\' => 21,
         ),
         'I' => 
         array (
@@ -67,7 +71,6 @@ class ComposerStaticInit4647381315d6caf172f5cd69d1360e4b
         'F' => 
         array (
             'Fig\\Link\\' => 9,
-            'FOS\\RestBundle\\' => 15,
         ),
         'D' => 
         array (
@@ -184,13 +187,17 @@ class ComposerStaticInit4647381315d6caf172f5cd69d1360e4b
         array (
             0 => __DIR__ . '/..' . '/psr/cache/src',
         ),
-        'Negotiation\\' => 
+        'Nelmio\\CorsBundle\\' => 
         array (
-            0 => __DIR__ . '/..' . '/willdurand/negotiation/src/Negotiation',
+            0 => __DIR__ . '/..' . '/nelmio/cors-bundle',
         ),
         'Monolog\\' => 
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
+        ),
+        'JMS\\SerializerBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/jms/serializer-bundle',
         ),
         'Incenteev\\ParameterHandler\\' => 
         array (
@@ -199,10 +206,6 @@ class ComposerStaticInit4647381315d6caf172f5cd69d1360e4b
         'Fig\\Link\\' => 
         array (
             0 => __DIR__ . '/..' . '/fig/link-util/src',
-        ),
-        'FOS\\RestBundle\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/friendsofsymfony/rest-bundle',
         ),
         'Doctrine\\Instantiator\\' => 
         array (
@@ -249,11 +252,33 @@ class ComposerStaticInit4647381315d6caf172f5cd69d1360e4b
                 0 => __DIR__ . '/..' . '/sensiolabs/security-checker',
             ),
         ),
+        'P' => 
+        array (
+            'PhpOption\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/phpoption/phpoption/src',
+            ),
+            'PhpCollection' => 
+            array (
+                0 => __DIR__ . '/..' . '/phpcollection/phpcollection/src',
+            ),
+        ),
+        'M' => 
+        array (
+            'Metadata\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/jms/metadata/src',
+            ),
+        ),
         'J' => 
         array (
-            'JsonpCallbackValidator' => 
+            'JMS\\Serializer' => 
             array (
-                0 => __DIR__ . '/..' . '/willdurand/jsonp-callback-validator/src',
+                0 => __DIR__ . '/..' . '/jms/serializer/src',
+            ),
+            'JMS\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/jms/parser-lib/src',
             ),
         ),
         'D' => 

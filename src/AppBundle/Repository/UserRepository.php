@@ -10,4 +10,21 @@ namespace AppBundle\Repository;
  */
 class UserRepository extends \Doctrine\ORM\EntityRepository
 {
+
+    /**
+     * Query-builder Login
+     * @return array
+     */
+    public function authorizedAccess($email, $password) {
+        return $this->createQueryBuilder("u")
+            ->leftJoin("u.role", "r")
+            ->addSelect("u", "r")
+            ->andWhere("u.email = :email")
+            ->andWhere("u.password = :password")
+            ->setParameter("email", $email)
+            ->setParameter("password", $password)
+            ->getQuery()
+            ->execute();
+    }
+
 }

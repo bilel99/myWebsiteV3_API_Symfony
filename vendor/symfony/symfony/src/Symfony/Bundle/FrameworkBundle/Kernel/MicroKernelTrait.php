@@ -28,7 +28,7 @@ trait MicroKernelTrait
      * Add or import routes into your application.
      *
      *     $routes->import('config/routing.yml');
-     *     $routes->add('/Webservice', 'AppBundle:Admin:dashboard', 'admin_dashboard');
+     *     $routes->add('/admin', 'AppBundle:Admin:dashboard', 'admin_dashboard');
      *
      * @param RouteCollectionBuilder $routes
      */

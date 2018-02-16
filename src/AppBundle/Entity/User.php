@@ -3,6 +3,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use JMS\Serializer\Annotation\Type as SerializerType;
 
 /**
  * User
@@ -39,7 +41,7 @@ class User
     /**
      * @var Role
      * @ORM\OneToOne(targetEntity="Role", inversedBy="user")
-     * @ORM\JoinColumn("role_id", referencedColumnName="id")
+     * @ORM\JoinColumn("role_id", referencedColumnName="id", nullable=true)
      */
     private $role;
 
@@ -78,6 +80,8 @@ class User
 
     /**
      * @var string
+     * @Assert\NotBlank(message="Please enter a name")
+     * @Assert\Type("string", message="name must be a string")
      *
      * @ORM\Column(name="nom", type="string", length=255)
      */
@@ -85,6 +89,8 @@ class User
 
     /**
      * @var string
+     * @Assert\NotBlank(message="Please enter a firstname")
+     * @Assert\Type("string", message="firstname must be a string")
      *
      * @ORM\Column(name="prenom", type="string", length=255)
      */
@@ -92,6 +98,9 @@ class User
 
     /**
      * @var string
+     * @Assert\NotBlank(message="Please enter a email")
+     * @Assert\Type("string", message="email must be a string")
+     * @Assert\Email(message="the email '{{ value }}' is not a valid email", checkMX=true)
      *
      * @ORM\Column(name="email", type="string", length=255, nullable=true, unique=true)
      */
@@ -99,6 +108,8 @@ class User
 
     /**
      * @var string
+     * @Assert\NotBlank(message="Please enter a password")
+     * @Assert\Type("string", message="password must be a string")
      *
      * @ORM\Column(name="password", type="string", length=255)
      */
@@ -106,29 +117,32 @@ class User
 
     /**
      * @var string
+     * @Assert\Type("string", message="sexe must be a string")
      *
-     * @ORM\Column(name="sexe", type="string", length=255)
+     * @ORM\Column(name="sexe", type="string", length=255, nullable=true)
      */
     private $sexe;
 
     /**
      * @var \DateTime
+     * @SerializerType("DateTime<'Y-m-d'>")
      *
-     * @ORM\Column(name="date_naissance", type="date")
+     * @ORM\Column(name="date_naissance", type="date", nullable=true)
      */
     private $dateNaissance;
 
     /**
      * @var int
+     * @Assert\Type("integer", message="email must be a integer")
      *
-     * @ORM\Column(name="mobile", type="integer")
+     * @ORM\Column(name="mobile", type="integer", nullable=true)
      */
     private $mobile;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="forgot", type="string", length=255)
+     * @ORM\Column(name="forgot", type="string", length=255, nullable=true)
      */
     private $forgot;
 
@@ -142,7 +156,7 @@ class User
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="updated_at", type="datetime")
+     * @ORM\Column(name="updated_at", type="datetime", nullable=true)
      */
     private $updatedAt;
 
@@ -431,15 +445,15 @@ class User
     }
 
     /**
-     * Set villes
+     * Set ville
      *
-     * @param \AppBundle\Entity\Villes $villes
+     * @param \AppBundle\Entity\Ville $ville
      *
      * @return User
      */
-    public function setVilles(\AppBundle\Entity\Villes $villes = null)
+    public function setVille(\AppBundle\Entity\Ville $ville = null)
     {
-        $this->villes = $villes;
+        $this->ville = $ville;
 
         return $this;
     }
@@ -628,17 +642,4 @@ class User
         return $this->culteWord;
     }
 
-    /**
-     * Set ville
-     *
-     * @param \AppBundle\Entity\Ville $ville
-     *
-     * @return User
-     */
-    public function setVille(\AppBundle\Entity\Ville $ville = null)
-    {
-        $this->ville = $ville;
-
-        return $this;
-    }
 }
