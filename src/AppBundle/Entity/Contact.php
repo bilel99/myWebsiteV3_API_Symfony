@@ -3,6 +3,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use JMS\Serializer\Annotation\Type as SerializerType;
 
 /**
  * Contact
@@ -23,6 +25,9 @@ class Contact
 
     /**
      * @var string
+     * @Assert\NotBlank(message="Please enter a email")
+     * @Assert\Type("string", message="email must be a string")
+     * @Assert\Email(message="the email '{{ value }}' is not a valid email", checkMX=true)
      *
      * @ORM\Column(name="email", type="string", length=255, nullable=true)
      */
@@ -30,6 +35,8 @@ class Contact
 
     /**
      * @var string
+     * @Assert\NotBlank(message="Please enter a sujet")
+     * @Assert\Type("string", message="sujet must be a string")
      *
      * @ORM\Column(name="sujet", type="string", length=255)
      */
@@ -37,6 +44,8 @@ class Contact
 
     /**
      * @var string
+     * @Assert\NotBlank(message="Please enter a text")
+     * @Assert\Type("string", message="text must be a string")
      *
      * @ORM\Column(name="text", type="text")
      */
